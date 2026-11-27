@@ -3771,10 +3771,10 @@ table.tbl tbody tr:hover td{background:#FBF8FC}
 /* —— 文字（深蓝灰，白底上清晰）—— */
   --ink:#2F3550; --ink-2:rgba(47,53,80,.74); --ink-3:rgba(47,53,80,.58);
   /* —— 面 —— */
-  --card:rgba(255,255,255,.66); --card-2:rgba(255,255,255,.78); --card-3:rgba(255,255,255,.9);
+  --card:rgba(255,255,255,.54); --card-2:rgba(255,255,255,.68); --card-3:rgba(255,255,255,.84);
   --line:rgba(70,62,95,.1); --line-2:rgba(70,62,95,.18);
   /* —— 玻璃材质 —— */
-  --glass:rgba(255,255,255,.6); --glass-2:rgba(255,255,255,.42); --glass-strong:rgba(255,255,255,.82); --glass-solid:rgba(255,255,255,.94);
+  --glass:rgba(255,255,255,.6); --glass-2:rgba(255,255,255,.42); --glass-strong:rgba(255,255,255,.82); --glass-solid:rgba(255,255,255,.86);
   --glass-line:rgba(255,255,255,.8);
   --glass-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 10px 26px rgba(72,84,130,.12);
   --glass-shadow-sm:0 1px 0 rgba(255,255,255,.85) inset,0 5px 14px rgba(72,84,130,.1);
@@ -4146,3 +4146,59 @@ input[type=date]::-webkit-datetime-edit,input[type=time]::-webkit-datetime-edit{
 }
 .vw-act.review{background:linear-gradient(135deg,#7F62E8 0%,#B9A3FF 100%);color:#2B2536}
 .vw-act.review .vw-act-ico,.vw-act.review .vw-act-n{background:rgba(255,255,255,.28)}
+
+/* =====================================================================
+   ★ v2.2 玻璃质感增强（2026-11-27）：浅色底 + 真玻璃
+   背景光斑更大更鲜艳（给 backdrop-filter 提供可模糊的内容），
+   侧栏改为「烟色玻璃」（参考 Vertix 深色磨砂侧栏），内容卡片保持白玻璃。
+   ===================================================================== */
+body{
+  background:
+    radial-gradient(42% 34% at 10% 6%,rgba(255,176,110,.5) 0%,rgba(255,176,110,0) 70%),
+    radial-gradient(40% 34% at 94% 12%,rgba(160,146,236,.48) 0%,rgba(160,146,236,0) 70%),
+    radial-gradient(46% 40% at 88% 96%,rgba(247,180,206,.42) 0%,rgba(247,180,206,0) 70%),
+    radial-gradient(36% 30% at 6% 92%,rgba(121,196,180,.3) 0%,rgba(121,196,180,0) 70%),
+    linear-gradient(165deg,#F7F4F0 0%,#EFEFF4 50%,#F7F2EC 100%);
+  background-attachment:fixed;
+}
+.scene .orb{filter:blur(60px);opacity:.85}
+.scene .orb.a{width:620px;height:620px;right:-160px;top:-200px;background:radial-gradient(circle,rgba(255,170,110,.7) 0%,rgba(255,170,110,.32) 45%,rgba(255,170,110,0) 72%)}
+.scene .orb.b{width:760px;height:760px;left:-260px;bottom:-300px;background:radial-gradient(circle,rgba(169,139,255,.62) 0%,rgba(169,139,255,.26) 50%,rgba(169,139,255,0) 75%)}
+.scene .orb.c{width:520px;height:520px;left:40%;top:30%;background:radial-gradient(circle,rgba(255,156,196,.45) 0%,rgba(255,156,196,0) 70%)}
+/* 内容卡片：白玻璃 + 顶部高光 + 柔影 */
+.card,.widget,.stat,.hero,.bp{
+  -webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 0 0 1px rgba(70,62,95,.05),0 12px 28px rgba(72,84,130,.13);
+}
+.card:hover,.widget:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,1),0 0 0 1px rgba(70,62,95,.06),0 16px 32px rgba(72,84,130,.17)}
+.li{ -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-color:rgba(255,255,255,.75)}
+.topbar{background:rgba(255,255,255,.5)}
+.mobile-nav{background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.86))}
+.subnav{background:rgba(255,255,255,.5)}
+/* 侧栏：烟色玻璃（桌面悬浮 / 手机抽屉通用） */
+.sidebar{
+  background:linear-gradient(165deg,rgba(46,42,60,.74) 0%,rgba(30,27,42,.68) 55%,rgba(40,36,54,.74) 100%);
+  -webkit-backdrop-filter:blur(28px) saturate(170%);backdrop-filter:blur(28px) saturate(170%);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 26px 60px rgba(40,34,60,.32),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(255,255,255,.06);
+}
+.sidebar .brand-title{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.sidebar .brand-sub{color:rgba(255,255,255,.55)}
+.sidebar .nav-group{color:rgba(255,255,255,.42)}
+.sidebar .nav-item{color:rgba(255,255,255,.8);border-color:transparent}
+.sidebar .nav-item:hover{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.14);box-shadow:0 10px 22px rgba(0,0,0,.25)}
+.sidebar .nav-item.active{background:linear-gradient(180deg,rgba(255,190,120,.22),rgba(255,138,91,.1));color:#fff;border-color:rgba(255,190,120,.36);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 20px rgba(255,138,91,.2)}
+.sidebar .nav-item.active .ico .svg-ico,.sidebar .nav-item.active .ico{color:var(--warm)}
+.sidebar .nav-item .ico .svg-ico{color:rgba(255,255,255,.7)}
+.sidebar .nav-item .badge{background:rgba(255,190,120,.22);color:var(--amber);border-color:rgba(255,255,255,.2)}
+.sidebar .side-foot{border-top:1px solid rgba(255,255,255,.12)}
+.sidebar .side-foot .btn-ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.85);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.sidebar .side-foot .btn-ghost:hover{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.26)}
+@media (max-width:720px){.sidebar{background:rgba(34,30,46,.9)}}
+/* 浮层：留一点透明度让磨砂可见 */
+.modal,.drawer{-webkit-backdrop-filter:blur(28px) saturate(150%);backdrop-filter:blur(28px) saturate(150%);border-color:rgba(255,255,255,.75);
+  box-shadow:0 30px 80px rgba(50,45,90,.28),inset 0 1px 0 rgba(255,255,255,.95)}
+/* 按钮：白玻璃，带模糊 */
+.btn,.btn-ghost{-webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%)}
