@@ -4277,3 +4277,30 @@ body{background:#262238;background-attachment:scroll}
 /* ★ v2 修订 12：紫色文字统一改白 */
 .wp-it.done,.wp-it.ok,.badge,.chip,.tag,.vw-lv,.vw-tag,.li-re .tag,a{color:#fff}
 .vw-card .k,.vw-card .meta,.vw-card small{color:rgba(255,255,255,.8)}
+
+/* ★ v2 修订 13：单词卡可读性——音节块与彩色标签在深色卡片上提亮 */
+.vw-syl .sy,.wd-syl .sy,.word-syl-preview .sy{font-weight:800;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.vw-syl .sy.s0,.wd-syl .sy.s0,.word-syl-preview .sy.s0{background:rgba(110,159,232,.34);color:#CFE2FF}
+.vw-syl .sy.s1,.wd-syl .sy.s1,.word-syl-preview .sy.s1{background:rgba(167,155,230,.38);color:#E6DEFF}
+.vw-syl .sy.s2,.wd-syl .sy.s2,.word-syl-preview .sy.s2{background:rgba(240,180,120,.38);color:#FFE9C7}
+.vw-syl .sy.s3,.wd-syl .sy.s3,.word-syl-preview .sy.s3{background:rgba(120,200,170,.38);color:#D6F5E8}
+.vw-syl .sy-sep,.wd-syl .sy-sep{color:rgba(255,255,255,.7);opacity:1}
+.word-card .tag,.vcard .tag,.vw-card .tag,.vw-tags .tag{font-weight:800;text-shadow:0 1px 2px rgba(0,0,0,.2)}
+.word-card .tag.green,.vcard .tag.green,.vw-card .tag.green{background:rgba(143,227,196,.28);color:#C8F5E4}
+.word-card .tag.blue,.vcard .tag.blue,.vw-card .tag.blue{background:rgba(169,139,255,.3);color:#E4DAFF}
+.word-card .tag.orange,.vcard .tag.orange,.vw-card .tag.orange{background:rgba(242,227,154,.28);color:#FBF3C8}
+.word-card .tag.purple,.vcard .tag.purple,.vw-card .tag.purple{background:rgba(201,184,255,.3);color:#ECE4FF}
+.word-card .tag.pink,.vcard .tag.pink,.vw-card .tag.pink{background:rgba(255,156,196,.3);color:#FFDCEB}
+.word-card .tag.red,.vcard .tag.red,.vw-card .tag.red{background:rgba(255,122,133,.32);color:#FFD9DD}
+.word-card .tag.gray,.vcard .tag.gray{background:rgba(255,255,255,.12);color:rgba(255,255,255,.85)}
+.vw-card .grade{font-weight:800}
+.vw-card .grade.g-know{background:rgba(143,227,196,.3);color:#C8F5E4}
+.vw-card .grade.g-no{background:rgba(255,122,133,.32);color:#FFD9DD}
+.vw-card .grade.g-new{background:rgba(242,227,154,.3);color:#FBF3C8}
+/* 修订 13 补：vw-card 内状态标签（认识/模糊/不记得）提亮 */
+.vw-card .tag.green{background:rgba(143,227,196,.3)!important;color:#C8F5E4!important}
+.vw-card .tag.orange{background:rgba(242,227,154,.3)!important;color:#FBF3C8!important}
+.vw-card .tag.red{background:rgba(255,122,133,.34)!important;color:#FFD9DD!important}
+.vw-card .tag.gray{background:rgba(255,255,255,.12)!important;color:rgba(255,255,255,.85)!important}
+.vw-card .tag{font-weight:800;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.vw-card .tag.deck{background:rgba(201,184,255,.3)!important;color:#ECE4FF!important}
