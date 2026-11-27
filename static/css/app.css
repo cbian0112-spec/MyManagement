@@ -4195,11 +4195,11 @@ body{background:#262238;background-attachment:scroll}
 .topbar{position:fixed;top:0;left:0;right:0;z-index:60;border-radius:0}
 .main{padding-top:calc(var(--h-top) + env(safe-area-inset-top))}   /* 顶栏高 = --h-top（全断点一致） */
 @media (min-width:721px){
-  .topbar{left:218px;padding-right:22px}
+   .topbar{left:0;padding-left:230px;padding-right:22px}   /* 顶栏铺满整行，标题与内容区左缘对齐 */
   .sidebar{top:calc(14px + var(--h-top) + 10px)}
 }
 @media (min-width:721px) and (max-width:1100px) and (max-height:800px){
-  .topbar{left:212px;padding-right:14px}
+  .topbar{padding-left:236px;padding-right:14px}
 }
 /* 顶栏固定后滚动内容会从底下穿过，底色加实 + 模糊，保证标题可读 */
 .topbar{background:rgba(36,32,52,.86);-webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);border-bottom:1px solid rgba(255,255,255,.08)}
