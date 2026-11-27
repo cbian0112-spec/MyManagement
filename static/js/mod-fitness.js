@@ -385,7 +385,7 @@
       }
     };
 
-    /* 训练记录分页：默认显示最近 7 天，翻「下一页」看更早的（每页一个 7 天窗口）。
+    /* 训练记录分页：按可用高度自动算每页条数（见下），翻「下一页」看更早的。
        _wPage 模块级保存：切 tab 回来还停在原来那一页。 */
     function renderWorkoutList() {
       const all = sortWorkouts(workouts);
@@ -413,18 +413,48 @@
         pager.innerHTML = '';
         return;
       }
-      const dayMs = 86400000;
-      const d2 = s => { const [y, m, dd] = s.split('-').map(Number); return new Date(y, m - 1, dd); };
-      const totalDays = Math.floor((d2(t) - d2(all[all.length - 1].date)) / dayMs);
-      const totalPages = Math.max(1, Math.floor(totalDays / 7) + 1);
+      /* 按高度分页：先把全部行渲染出来量高度，再按卡片可用高度贪心装填，
+         装得下几条每页就放几条（默认第一页撑满，不留白）。
+         可用高度 = 卡片当前高度（与右侧体测列等高）− 列表起点到底部的距离 − 分页条 */
+      const card = box.closest('.card') || box.parentElement;
+      /* 先清空量「卡片自身最小高度」和「并排另一列的高度」（取大者作为目标高度） */
+      box.innerHTML = ''; pager.innerHTML = '';
+      const cr = card.getBoundingClientRect();
+      const col = card.parentElement;             // 本列（训练卡 + 下方其它卡）
+      const colR = col.getBoundingClientRect();
+      /* 并排另一列的高度 = 目标列高；单列布局时按视口高度填满一屏 */
+      let target = 0, side = false;
+      [...col.parentElement.children].forEach(sib => {
+        if (sib === col) return;
+        const sr = sib.getBoundingClientRect();
+        if (Math.abs(sr.top - colR.top) < 40) { side = true; target = Math.max(target, sr.height); }
+      });
+      if (!side) target = 0;   // 单列：下面按「列表占约一屏」算
+      target = Math.max(target, cr.height);       // 本列其它卡 + 训练卡最小高度
+      const targetAbs = side ? (colR.top + target) : (box.getBoundingClientRect().top + window.innerHeight * 0.92);   // 列底部（绝对坐标）
+      box.innerHTML = all.map(mkRow).join('');
+      const kids = [...box.children];
+      const hs = kids.map(k => k.getBoundingClientRect().height);
+      const gap = parseFloat(getComputedStyle(box).rowGap || getComputedStyle(box).gap) || 0;
+      const pagerH = pager.getBoundingClientRect().height || 36;
+      const colOther = Math.max(0, colR.bottom - card.getBoundingClientRect().bottom);   // 本列训练卡下方其它卡的高度
+      const below = Math.max(120, targetAbs - colOther - box.getBoundingClientRect().top - pagerH - 22);
+      let pageSize = 0, acc = 0;
+      for (let i = 0; i < hs.length; i++) {
+        const need = hs[i] + (pageSize ? gap : 0);
+        if (pageSize && acc + need > below) break;
+        acc += need; pageSize++;
+      }
+      pageSize = Math.max(1, pageSize);
+      const totalPages = Math.max(1, Math.ceil(all.length / pageSize));
       if (_wPage >= totalPages) _wPage = totalPages - 1;
       if (_wPage < 0) _wPage = 0;
-      const from = u.addDays(t, -7 * (_wPage + 1) + 1), to = u.addDays(t, -7 * _wPage);
-      const rows = all.filter(w => w.date >= from && w.date <= to);
-      box.innerHTML = rows.length ? rows.map(mkRow).join('')
-        : '<div class="empty small">这一周没有训练记录</div>';
-      const label = `${from.slice(5).replace('-', '/')} ~ ${to.slice(5).replace('-', '/')}${_wPage === 0 ? '（最近 7 天）' : ''}`;
-      pager.innerHTML = `<span class="small muted">共 ${workouts.length} 条 · 第 ${_wPage + 1}/${totalPages} 页 · ${label}</span>
+      const start = _wPage * pageSize;
+      const rows = all.slice(start, start + pageSize);
+      box.innerHTML = rows.map(mkRow).join('');
+      const first = rows[0].date, last = rows[rows.length - 1].date;
+      const label = (first === last) ? first.slice(5).replace('-', '/') : `${first.slice(5).replace('-', '/')} ~ ${last.slice(5).replace('-', '/')}`;
+      pager.innerHTML = `<span class="small muted">共 ${all.length} 条 · 每页 ${pageSize} 条 · 第 ${_wPage + 1}/${totalPages} 页 · ${label}</span>
         <div class="spacer"></div>
         <button class="btn xs" data-wprev ${_wPage <= 0 ? 'disabled' : ''}>上一页</button>
         <button class="btn xs" data-wnext ${_wPage >= totalPages - 1 ? 'disabled' : ''}>下一页</button>`;
@@ -476,6 +506,12 @@
       if (bn) bn.onclick = () => { if (_bodyPage < totalPages - 1) { _bodyPage++; renderBodyTable(); } };
     }
     renderBodyTable();
+    /* 右列渲染完后再算一次（首帧时右列还没高度，会把每页条数算少）；窗口尺寸变化时重算 */
+    renderWorkoutList();
+    let _rz = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(_rz); _rz = setTimeout(() => { if (el.isConnected) renderWorkoutList(); }, 180);
+    });
   }
 
   function fmtDelta(d, unit) {
