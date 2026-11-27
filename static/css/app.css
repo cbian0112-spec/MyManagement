@@ -4224,3 +4224,17 @@ body{background:#262238;background-attachment:scroll}
   .side-foot{padding:6px 8px}
   .side-foot .btn-ghost.block{min-height:34px;padding:5px 12px;font-size:13px}
 }
+/* =====================================================================
+   ★ v2 修订 8：品牌区（logo + 生活小星球 + 日期）搬到顶栏左侧，填满侧栏上方空白
+   ===================================================================== */
+.topbar .brand{display:none}                       /* 手机：顶栏不放品牌 */
+.sidebar .sb-brand{display:flex}                   /* 手机：抽屉里保留品牌 */
+@media (min-width:721px){
+  .topbar{padding-left:0}
+  .topbar .brand{display:flex;align-items:center;gap:10px;flex:none;width:218px;height:100%;box-sizing:border-box;
+    margin-left:0;padding:0 14px 0 14px;border-right:1px solid rgba(255,255,255,.1)}
+  .sidebar .sb-brand{display:none}
+}
+@media (min-width:721px) and (max-width:1100px) and (max-height:800px){
+  .topbar .brand{width:224px;padding:0 14px 0 14px}
+}

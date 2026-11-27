@@ -559,6 +559,9 @@ window.PM = (function () {
   PM.boot = async function () {
     await buildNav();
     document.getElementById('brandDate').textContent = `${U.cnDate(U.today())} 周${U.weekday(U.today())}`;
+    /* 手机抽屉里的品牌区（DOM 上放在顶栏，抽屉用一份副本） */
+    document.querySelector('.sidebar .sb-brand .brand-mark').innerHTML = PM.MASCOT_SVG || '';
+    document.querySelector('.sidebar .sb-brand .brand-sub').textContent = document.getElementById('brandDate').textContent;
     document.getElementById('btnMenu').onclick = () => setSidebar(!document.getElementById('sidebar').classList.contains('open'));
     document.getElementById('btnSettings').onclick = () => PM.go('#/settings');
     window.addEventListener('hashchange', () => { closeSidebar(); render(); });
