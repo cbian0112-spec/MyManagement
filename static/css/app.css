@@ -4243,7 +4243,7 @@ body{background:#262238;background-attachment:scroll}
    ===================================================================== */
 :root{--ink-2:rgba(244,240,234,.9); --ink-3:rgba(244,240,234,.7)}
 /* 导航图标：22px 方圆角底板 + 14px 线性图标；选中态橙色底深色图标 */
-.nav-item .ico{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;
+.nav-item .ico{width:24px;height:24px;border-radius:3px;display:grid;place-items:center;
   background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.1);opacity:1;flex:none;
   transition:background .2s,transform .45s var(--spring)}
 .nav-item .ico .svg-ico,.nav-item .ico svg{width:14px;height:14px;color:rgba(255,255,255,.86)}
