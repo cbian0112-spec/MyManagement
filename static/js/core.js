@@ -542,15 +542,26 @@ window.PM = (function () {
   }
   PM.updateBadges = updateBadges;
 
-  function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); }
+  function setSidebar(open) {
+    document.getElementById('sidebar').classList.toggle('open', !!open);
+    let m = document.getElementById('sbMask');
+    if (!m) {
+      m = U.el('<div class="sb-mask" id="sbMask"></div>');
+      document.body.appendChild(m);
+      m.onclick = closeSidebar;
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSidebar(); });
+    }
+    m.classList.toggle('on', !!open);
+  }
+  function closeSidebar() { setSidebar(false); }
 
   /* ---------------- 启动 ---------------- */
   PM.boot = async function () {
     await buildNav();
     document.getElementById('brandDate').textContent = `${U.cnDate(U.today())} 周${U.weekday(U.today())}`;
-    document.getElementById('btnMenu').onclick = () => document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('btnMenu').onclick = () => setSidebar(!document.getElementById('sidebar').classList.contains('open'));
     document.getElementById('btnSettings').onclick = () => PM.go('#/settings');
-    window.addEventListener('hashchange', render);
+    window.addEventListener('hashchange', () => { closeSidebar(); render(); });
     loadWeather();
     render();
     setInterval(loadWeather, 30 * 60 * 1000);

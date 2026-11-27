@@ -4171,3 +4171,17 @@ body{background:#262238;background-attachment:scroll}
 .cal-it.done{color:#1B1520}
 .cal-it.done > span,.cal-it.done .tm{color:#1B1520}
 .cal-it.done .ck{color:color-mix(in srgb, var(--c, #9AA7C7) 40%, #1B1520)}
+
+/* =====================================================================
+   ★ v2 修订 4：底栏留白 + 抽屉遮罩
+   底栏：Safari 浏览器自身已有工具栏，env(safe-area-inset-bottom) 会多出一截空白；
+   仅在「添加到主屏幕」全屏模式才补安全区。
+   抽屉：加半透明遮罩，点遮罩 / 点空白 / 切页面 自动收回。
+   ===================================================================== */
+.mobile-nav{bottom:6px;padding-bottom:5px}
+@media (display-mode:standalone){
+  .mobile-nav{bottom:calc(6px + env(safe-area-inset-bottom));padding-bottom:calc(5px + env(safe-area-inset-bottom))}
+}
+.sb-mask{position:fixed;inset:0;z-index:140;background:rgba(20,16,30,.45);opacity:0;pointer-events:none;transition:opacity .25s}
+.sb-mask.on{opacity:1;pointer-events:auto}
+@media (min-width:721px){.sb-mask{display:none}}
