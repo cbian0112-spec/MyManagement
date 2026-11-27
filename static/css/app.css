@@ -4238,3 +4238,20 @@ body{background:#262238;background-attachment:scroll}
 @media (min-width:721px) and (max-width:1100px) and (max-height:800px){
   .topbar .brand{width:224px;padding:0 14px 0 14px}
 }
+/* =====================================================================
+   ★ v2 修订 9：菜单图标改方圆角小块 + 次要文字提亮
+   ===================================================================== */
+:root{--ink-2:rgba(244,240,234,.9); --ink-3:rgba(244,240,234,.7)}
+/* 导航图标：22px 方圆角底板 + 14px 线性图标；选中态橙色底深色图标 */
+.nav-item .ico{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.1);opacity:1;flex:none;
+  transition:background .2s,transform .45s var(--spring)}
+.nav-item .ico .svg-ico,.nav-item .ico svg{width:14px;height:14px;color:rgba(255,255,255,.86)}
+.nav-item:hover .ico{background:rgba(255,255,255,.16)}
+.nav-item.active .ico{background:linear-gradient(135deg,var(--amber),var(--warm-2));border-color:rgba(255,255,255,.4);
+  box-shadow:0 4px 10px rgba(255,138,91,.35)}
+.nav-item.active .ico .svg-ico,.nav-item.active .ico svg{color:#2A1A0E}
+/* 天气、衣着、统计标签：近白 */
+.hero .hsub,.hero .hw span,.hero .tip.dress,.hero .hweather,.hero .hsub span{color:rgba(255,255,255,.94)}
+.hero .hsub span{background:rgba(255,255,255,.16)}
+.stat .k,.bp-k,.vw-stats .stat .k{color:rgba(255,255,255,.78)}
