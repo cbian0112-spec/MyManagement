@@ -2,11 +2,6 @@
 
 围绕四件事的个人习惯系统：**身体 · 成长 · 事务 · 种草清单**，全部汇总到同一个「今日页面」。
 
-
-> 🌐 项目主页（GitHub Pages）：https://cbian0112-spec.github.io/MyManagement/
-
-![桌面端预览](docs/docs-preview-dark-desktop.png)
-
 ## 快速开始
 
 ```bash
