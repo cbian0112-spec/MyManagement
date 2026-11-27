@@ -542,6 +542,19 @@ window.PM = (function () {
   }
   PM.updateBadges = updateBadges;
 
+  /* 紫色文字统一改白：扫描文字元素，计算色偏紫（b 高、r-g 差小、b-g 大）则置白 */
+  function dePurple(root) {
+    const els = (root || document.body).querySelectorAll('body *, .v, span, b, small, em, a, div, p, label, button');
+    els.forEach(el => {
+      if (!el.childNodes.length) return;
+      if (![...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) return;
+      const c = getComputedStyle(el).color.match(/[\d.]+/g); if (!c || c.length < 3) return;
+      const [r, g, b] = c.map(Number);
+      if (b > 140 && r > 110 && (b - g) > 28 && (r - g) > 8 && !(el.classList.contains('keep-purple'))) el.style.color = '#fff';
+    });
+  }
+  PM.dePurple = dePurple;
+
   function setSidebar(open) {
     document.getElementById('sidebar').classList.toggle('open', !!open);
     let m = document.getElementById('sbMask');
@@ -565,6 +578,12 @@ window.PM = (function () {
     document.getElementById('btnMenu').onclick = () => setSidebar(!document.getElementById('sidebar').classList.contains('open'));
     document.getElementById('btnSettings').onclick = () => PM.go('#/settings');
     window.addEventListener('hashchange', () => { closeSidebar(); render(); });
+    /* 视图每次重绘后自动去紫 */
+    const deb = () => { clearTimeout(deb._t); deb._t = setTimeout(() => dePurple(document.body), 60); };
+    const mo = new MutationObserver(deb);
+    mo.observe(document.getElementById('view'), { childList: true, subtree: true, characterData: true });
+    ['modalRoot', 'drawerRoot', 'subnav'].forEach(id => { const n = document.getElementById(id); if (n) mo.observe(n, { childList: true, subtree: true }); });
+    setTimeout(deb, 800);
     loadWeather();
     render();
     setInterval(loadWeather, 30 * 60 * 1000);

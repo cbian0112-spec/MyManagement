@@ -145,7 +145,7 @@ body{overflow-x:hidden;overflow-x:clip;max-width:100%}
 .nav-item .ico{display:inline-flex;align-items:center;justify-content:center;height:22px;opacity:1}
 .nav-item .ico .svg-ico{color:var(--ink-3);transition:color .2s,transform .2s var(--spring)}
 .nav-item:hover .ico .svg-ico{transform:scale(1.06)}
-.nav-item.active .ico .svg-ico{color:var(--blue-deep)}
+.nav-item.active .ico .svg-ico{color:#fff}
 .nav-item .badge{
   margin-left:auto;background:var(--red);color:#fff;border-radius:5px;border:1.5px solid rgba(255,255,255,.8);
   font-size:10.5px;padding:0 7px;font-weight:800;box-shadow:0 2px 6px rgba(220,122,120,.4);
@@ -1058,7 +1058,7 @@ table.tbl tbody tr:hover{transform:translateX(4px)}
   .mobile-nav .mn .mi{font-size:18px;display:inline-flex;align-items:center;justify-content:center;height:20px}
   /* 手机底栏图标：细一档，选中变主色 */
   .mobile-nav .mn .svg-ico{color:var(--ink-3);transition:color .2s,transform .2s var(--spring)}
-  .mobile-nav .mn.on .svg-ico{color:var(--blue-deep);transform:translateY(-1px)}
+  .mobile-nav .mn.on .svg-ico{color:#fff;transform:translateY(-1px)}
   .mobile-nav .mn.on{color:#fff;background:linear-gradient(135deg,var(--blue),var(--lilac));box-shadow:0 4px 12px rgba(110,159,232,.35)}
   .hero{padding:18px 18px 24px}
   .hero .hdate{font-size:30px}
@@ -1186,7 +1186,7 @@ table.tbl tbody tr:hover{transform:translateX(4px)}
   .mobile-nav .mn{font-size:10px;gap:0;padding:4px 2px;border-radius:5px}
   .mobile-nav .mn .mi{font-size:19px;line-height:1.2}
   .mobile-nav .mn.on{
-    color:var(--blue-deep);background:rgba(110,159,232,.14);
+    color:#fff;background:rgba(110,159,232,.14);
     box-shadow:none;transform:translateY(-1px);
   }
 
@@ -1329,7 +1329,7 @@ table.tbl tbody tr:hover{transform:translateX(4px)}
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;
 }
 .wp-it.plan{background:var(--mint-soft);color:#3F8A77;border:1px dashed rgba(121,196,180,.8)}
-.wp-it.done{background:var(--blue-soft);color:var(--blue-deep);cursor:pointer}
+.wp-it.done{background:var(--blue-soft);color:#fff;cursor:pointer}
 .wp-rest{font-size:11px;color:var(--ink-3);font-weight:700;padding-top:2px}
 
 @media (max-width:720px){
@@ -1464,11 +1464,11 @@ input[type=range]{border:1px solid var(--line);background:linear-gradient(to rig
 input[type=range]::-webkit-slider-thumb{background:#1A141C;border:2px solid #fff}
 input[type=range]::-moz-range-thumb{background:#1A141C}
 input[type=range]::-moz-range-progress{background:linear-gradient(to right,var(--lilac),var(--blue-deep))}
-input[type=checkbox]{accent-color:var(--blue-deep)}
+input[type=checkbox]{accent-color:#fff}
 .set-cell{background:#FAF7FB;border:1px solid var(--line);box-shadow:none}
 .set-cell input{background:#fff;border:1px solid var(--line);font-family:var(--font)}
 .set-cell.filled{background:var(--lilac-soft);border-color:rgba(139,107,217,.4)}
-.set-cell.filled label{color:var(--blue-deep)}
+.set-cell.filled label{color:#fff}
 
 /* 标签：马卡龙色系 */
 .tag{background:#F6F3F8;border:1px solid transparent;color:var(--ink-2);border-radius:999px}
@@ -1509,7 +1509,7 @@ input[type=checkbox]{accent-color:var(--blue-deep)}
 .wk-it.todo:hover{background:#fff}
 .cal-empty{background:#FAF7FB;border:1px dashed var(--line)}
 .cal-jump{background:var(--lilac-soft);border:1px solid transparent;color:var(--ink-2)}
-.cal-jump b{color:var(--blue-deep)}
+.cal-jump b{color:#fff}
 .legend i.lg-plan{border-color:rgba(58,167,159,.85)}
 
 /* 表格 */
@@ -1633,7 +1633,7 @@ table.tbl tbody tr:hover td{background:#FBF8FC}
   /* 6 个入口时平分宽度，字要收一点才不会挤 */
   .mobile-nav .mn{padding:5px 1px;font-size:10px;letter-spacing:-.2px;min-width:0}
   .mobile-nav .mn > span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-  .mobile-nav .mn.on{color:var(--blue-deep);background:var(--blue-soft);box-shadow:none}
+  .mobile-nav .mn.on{color:#fff;background:var(--blue-soft);box-shadow:none}
   .modal{background:#fff}
   .tbl tr{background:#fff;border:1px solid var(--line);border-radius:5px;box-shadow:var(--glass-shadow-sm)}
   .card,.widget{background:#fff;border:1px solid var(--line);box-shadow:var(--glass-shadow-sm)}
@@ -2996,7 +2996,7 @@ table.tbl tbody tr:hover td{background:#FBF8FC}
   border:2px dashed var(--lilac);border-radius:5px;background:var(--lilac-soft);
   padding:14px 16px;transition:.16s;
 }
-.kb-upload:hover,.kb-upload.drag{background:rgba(167,155,230,.32);border-color:var(--lilac-deep)}
+.kb-upload:hover,.kb-upload.drag{background:rgba(167,155,230,.32);border-color:#fff}
 .kb-upload.busy{opacity:.65;cursor:wait}
 .kb-upload-ico{font-size:22px}
 .kb-upload-t{flex:1;font-size:13px;font-weight:700;color:var(--ink);line-height:1.6}
@@ -3169,7 +3169,7 @@ table.tbl tbody tr:hover td{background:#FBF8FC}
 .dt-session{max-width:580px;margin:0 auto;padding:6px 2px 34px}
 .dt-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
 .dt-top .dt-prog{font-weight:800;font-size:15px;color:var(--ink);white-space:nowrap}
-.dt-top .dt-prog b{font-family:var(--font-num);font-size:22px;color:var(--blue-deep)}
+.dt-top .dt-prog b{font-family:var(--font-num);font-size:22px;color:#fff}
 .dt-top .dt-prog span{font-weight:600;color:var(--ink-3);font-size:12.5px}
 .dt-score{margin-left:auto;display:flex;gap:6px}
 .dt-score span{font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;
@@ -3207,13 +3207,13 @@ table.tbl tbody tr:hover td{background:#FBF8FC}
 .dt-answer{margin-top:18px;padding-top:16px;border-top:1px dashed rgba(110,159,232,.38)}
 .dt-answer-label{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:800;
   letter-spacing:.8px;color:var(--ink-3);text-transform:uppercase;margin-bottom:10px}
-.dt-answer-label span{font-size:11px;font-weight:700;color:var(--blue-deep);letter-spacing:0;
+.dt-answer-label span{font-size:11px;font-weight:700;color:#fff;letter-spacing:0;
   background:rgba(110,159,232,.14);padding:2px 9px;border-radius:999px}
 .dt-slots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:12px;min-height:34px}
 .dt-slot{width:28px;height:34px;border-radius:5px;background:rgba(110,159,232,.09);
   border:1px solid rgba(110,159,232,.22);border-bottom:2px solid rgba(110,159,232,.42);
   display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;
-  font-family:var(--font-num);color:var(--blue-deep);transition:all .18s var(--spring)}
+  font-family:var(--font-num);color:#fff;transition:all .18s var(--spring)}
 .dt-slot.filled{background:linear-gradient(160deg,#fff,rgba(110,159,232,.18));
   border-color:rgba(110,159,232,.6);transform:translateY(-2px);
   box-shadow:0 5px 12px -7px rgba(74,123,209,.9)}
@@ -3647,7 +3647,7 @@ table.tbl tbody tr:hover td{background:#FBF8FC}
   background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.62));
   border:1px solid rgba(255,255,255,.95);
   box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(139,107,217,.14),0 6px 14px rgba(139,107,217,.14);
-  color:var(--blue-deep);
+  color:#fff;
 }
 /* ☰ 菜单键只在手机模式显示，不能被上面的玻璃样式把 display 顶开 */
 .only-mobile{display:none}
@@ -4267,10 +4267,13 @@ body{background:#262238;background-attachment:scroll}
 .fit-page .li-sub,.fit-page .muted,.fit-page .small,.fit-page .small.muted,.fit-page .stat .k,
 .fit-page .card-head small,.fit-page .wp-hd,.fit-page .wp-it{color:rgba(255,255,255,.9)}
 .fit-page .wp-it.plan{color:#9FE8CC}
-.fit-page .wp-it.done,.fit-page .wp-it.ok{color:#D6C9FF}
+.fit-page .wp-it.done,.fit-page .wp-it.ok{color:#fff}
 .fit-page .bp-d,.fit-page .bp-k,.fit-page .bp .muted{color:rgba(255,255,255,.85)}
 /* ★ v2 修订 11：去掉菜单项的指针光晕与外发光，选中态只保留底色 */
 .nav-item::after{display:none!important;content:none!important}
 .nav-item.active{box-shadow:none!important}
 .nav-item:hover{box-shadow:none!important}
 .sidebar::before,.sidebar::after{display:none!important}
+/* ★ v2 修订 12：紫色文字统一改白 */
+.wp-it.done,.wp-it.ok,.badge,.chip,.tag,.vw-lv,.vw-tag,.li-re .tag,a{color:#fff}
+.vw-card .k,.vw-card .meta,.vw-card small{color:rgba(255,255,255,.8)}
