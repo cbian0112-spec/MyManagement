@@ -1,0 +1,43 @@
+/* 自托管拉丁字体（latin 子集），替代 Google Fonts 外部阻塞 */
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/baloo2-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/baloo2-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/baloo2-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/baloo2-800.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/cormorantgaramond-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/cormorantgaramond-700.woff2') format('woff2');
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#F3EEF6">
+<title>我的日常</title>
+<link rel="stylesheet" href="/css/fonts.css?v=20261127130011">
+<link rel="stylesheet" href="/css/app.css?v=20261127130011">
+<!-- 浏览器标签图标：小苗苗 -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 92 V48' stroke='%231B1520' stroke-width='9' stroke-linecap='round'/><path d='M50 52 C20 52 10 28 26 18 C32 -6 68 -6 74 18 C90 28 80 52 50 52 Z' fill='%23FFFFFF' stroke='%231B1520' stroke-width='8' stroke-linejoin='round'/><path d='M50 52 C35 52 29 33 38 27 C40 13 60 13 62 27 C71 33 65 52 50 52 Z' fill='%23A79BE6'/></svg>">
+</head>
+<body>
+
+<!-- 背景：晨雾场景（天蓝光斑 + 淡紫光晕） -->
+<div class="scene" aria-hidden="true">
+  <span class="orb a"></span><span class="orb b"></span><span class="orb c"></span>
+</div>
+
+<div id="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark" id="brandMark"></span>
+      <div>
+        <div class="brand-title">生活小星球</div>
+        <div class="brand-sub" id="brandDate">—</div>
+      </div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="side-foot">
+      <button class="btn-ghost block" id="btnSettings">⚙️ 设置</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn only-mobile" id="btnMenu">☰</button>
+      <div class="topbar-title" id="pageTitle">今日</div>
+      <div class="topbar-right">
+        <span class="weather-chip" id="weatherChip">天气加载中…</span>
+      </div>
+    </header>
+    <div class="subnav" id="subnav" style="display:none"></div>
+    <div class="view" id="view"></div>
+  </main>
+
+  <div class="mobile-nav" id="mobileNav"></div>
+</div>
+
+<div class="modal-root" id="modalRoot"></div>
+<div class="toast-root" id="toastRoot"></div>
+<div class="drawer-root" id="drawerRoot"></div>
+
+<script src="/js/core.js?v=20261127130011"></script>
+<script src="/js/icons.js?v=20261127130011"></script>
+<script src="/js/holiday.js?v=20261127130011"></script>
+<script src="/js/mod-fitness.js?v=20261127130011"></script>
+<!-- 成长模块已清空，等待重建学习模块 -->
+<!-- 新模块放这里：<script src="/js/mod-你的模块.js"></script> -->
+<script src="/js/mod-today.js?v=20261127130011"></script>
+<script src="/js/mod-todo.js?v=20261127130011"></script>
+<script src="/js/mod-wishlist.js?v=20261127130011"></script>
+<script src="/js/mod-notes.js?v=20261127130011"></script>
+<script src="/js/listening-seed.js?v=20261127130011"></script>
+  <script src="/js/mod-english.js?v=20261127130011"></script>
+<script src="/js/reminder.js?v=20261127130011"></script>
+<script src="/js/boot.js?v=20261127130011"></script>
+<script>
+  // 卡通吉祥物：小芽苗
+  document.getElementById('brandMark').innerHTML = PM.MASCOT_SVG;
+</script>
+</body>
+</html>
