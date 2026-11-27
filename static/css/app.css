@@ -4185,3 +4185,5 @@ body{background:#262238;background-attachment:scroll}
 .sb-mask{position:fixed;inset:0;z-index:140;background:rgba(20,16,30,.45);opacity:0;pointer-events:none;transition:opacity .25s}
 .sb-mask.on{opacity:1;pointer-events:auto}
 @media (min-width:721px){.sb-mask{display:none}}
+/* ★ v2 修订 5：侧栏移到 #app 外（与底栏同理，iOS 上 #app 内的 fixed 元素会随页面滚动） */
+@media (min-width:721px){.sidebar{z-index:100}}   /* 桌面：低于弹窗遮罩(110) */
