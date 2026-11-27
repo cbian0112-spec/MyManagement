@@ -3371,7 +3371,7 @@ table.tbl tbody tr:hover td{background:#FBF8FC}
 .pager .btn:disabled{opacity:.4;cursor:not-allowed}
 /* ===================== 训练明细小标签（力量：器械·重量·组数；有氧：距离/心率…） ===================== */
 .wd-detail{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
-.wd-chip{font-size:11px;line-height:1.35;padding:2px 8px;border-radius:5px;background:var(--lilac-soft);color:#5b52c9;font-weight:800;white-space:nowrap}
+.wd-chip{font-size:11px;line-height:1.35;padding:2px 8px;border-radius:5px;background:var(--lilac-soft);color:#fff;font-weight:800;white-space:nowrap}
 
 /* ===================== 体测卡片列表（附件样式：深色行 + 蓝色大数字 + 重/脂/肌） ===================== */
 .bod-list{display:flex;flex-direction:column;gap:8px}

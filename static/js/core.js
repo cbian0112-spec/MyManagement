@@ -544,13 +544,13 @@ window.PM = (function () {
 
   /* 紫色文字统一改白：扫描文字元素，计算色偏紫（b 高、r-g 差小、b-g 大）则置白 */
   function dePurple(root) {
-    const els = (root || document.body).querySelectorAll('body *, .v, span, b, small, em, a, div, p, label, button');
+    const els = (root || document.body).querySelectorAll('*');
     els.forEach(el => {
       if (!el.childNodes.length) return;
       if (![...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) return;
       const c = getComputedStyle(el).color.match(/[\d.]+/g); if (!c || c.length < 3) return;
       const [r, g, b] = c.map(Number);
-      if (b > 140 && r > 110 && (b - g) > 28 && (r - g) > 8 && !(el.classList.contains('keep-purple'))) el.style.color = '#fff';
+      if (b > 150 && (b - g) > 45 && (b - r) > 40 && (r - g) > -10 && !el.classList.contains('keep-purple')) el.style.color = '#fff';
     });
   }
   PM.dePurple = dePurple;
