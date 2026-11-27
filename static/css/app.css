@@ -4141,3 +4141,33 @@ input[type=date]::-webkit-datetime-edit,input[type=time]::-webkit-datetime-edit{
 }
 .vw-act.review{background:linear-gradient(135deg,#7F62E8 0%,#B9A3FF 100%);color:#fff}
 .vw-act.review .vw-act-ico,.vw-act.review .vw-act-n{background:rgba(255,255,255,.28)}
+
+/* =====================================================================
+   ★ v2 修订 3（2026-11-27，iPhone Duo 实机反馈）
+   ① 旋转时顶部黑边：iOS 对 body 的 background-attachment:fixed 重绘不可靠，
+      把背景搬到固定层 .scene 上，html/body 给同色兜底。
+   ② 竖屏底栏随滚动漂移：底栏是 #app 的子元素，fixed 定位在 iOS 上易被祖先影响，
+      现已移到 #app 外（index.html）；再去掉触屏上的 backdrop-filter（iOS 滚动时
+      磨砂层会先跟着内容走再弹回），改为实底 + translateZ(0) 提升合成层。
+   ③ 日历「已完成」条目是浅色底，文字改为黑色。
+   ===================================================================== */
+html{background:#262238}
+body{background:#262238;background-attachment:scroll}
+.scene{
+  background:
+    radial-gradient(80% 55% at 88% -8%,#4A3260 0%,rgba(74,50,96,0) 60%),
+    radial-gradient(55% 40% at -8% 102%,#4A2E3E 0%,rgba(74,46,62,0) 62%),
+    radial-gradient(50% 36% at 62% 108%,rgba(255,170,110,.26) 0%,rgba(255,170,110,0) 70%),
+    radial-gradient(40% 30% at 30% -10%,rgba(255,200,140,.16) 0%,rgba(255,200,140,0) 70%),
+    linear-gradient(165deg,#2E2940 0%,#262238 48%,#2A2438 100%);
+}
+/* 底栏：任何视口下都贴视口底，左右对称留白 */
+.mobile-nav{position:fixed!important;left:10px!important;right:10px!important;width:auto!important;transform:translateZ(0)}
+@media (pointer:coarse){
+  .mobile-nav{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+    background:linear-gradient(180deg,rgba(46,42,66,.98),rgba(36,32,52,.99))!important}
+}
+/* 日历已完成条目：浅底黑字 */
+.cal-it.done{color:#1B1520}
+.cal-it.done > span,.cal-it.done .tm{color:#1B1520}
+.cal-it.done .ck{color:color-mix(in srgb, var(--c, #9AA7C7) 40%, #1B1520)}
